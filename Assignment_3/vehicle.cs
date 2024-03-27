@@ -1,14 +1,15 @@
 ﻿using System;
 
-public class vehicle
+// Abstract Vehicle Class
+public abstract class Vehicle
 {
     public string Model { get; set; }
     public string Manufacturer { get; set; }
     public int Year { get; set; }
     public double RentalPrice { get; set; }
 
-
-    public vehicle(string model, string manufacturer, int year, double rentalPrice)
+    // Constructor
+    protected Vehicle(string model, string manufacturer, int year, double rentalPrice)
     {
         Model = model;
         Manufacturer = manufacturer;
@@ -16,8 +17,6 @@ public class vehicle
         RentalPrice = rentalPrice;
     }
 
-    public virtual void DisplayDetails()
-    {
-        Console.WriteLine($"Model: {Model}, Manufacturer: {Manufacturer}, Year: {Year}, Rental Price: {RentalPrice:C}");
-    }
+    // Abstract method to display vehicle details
+    public abstract void DisplayDetails();
 }
