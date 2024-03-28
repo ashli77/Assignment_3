@@ -1,8 +1,8 @@
-﻿namespace Assignment
+﻿namespace rental
 {
     public class RentalAgency   //Created RentalAgency class
     {
-        public Vehicle[] fleet;   // Fleet array to store vehicle data
+        public Vehicle[] fleet;     // Fleet array to store vehicle data
         public int count;           // Declaring Array
         public double totalRevenue; //Total Revenue
 
@@ -24,7 +24,7 @@
             }
         }
 
-        public void RemoveVehicle(Vehicle vehicle)  // remove vehicle from fleet
+        public void RemoveVehicle(Vehicle vehicle)  // Remove vehicle from fleet
         {
             int index = Array.IndexOf(fleet, vehicle);
             if (index >= 0)

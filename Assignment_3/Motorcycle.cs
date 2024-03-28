@@ -1,7 +1,7 @@
 ﻿//Class Motorcycle
 using System;
 
-namespace Assignment
+namespace rental
 {
     public class Motorcycle : Vehicle
     {
@@ -11,13 +11,13 @@ namespace Assignment
 
         public void Motorcycledata()
         {
-            Console.WriteLine("Enter engineCapacity:");
+            Console.WriteLine("Enter Engine Capacity:");
             engineCapacity = Convert.ToInt32(Console.ReadLine());   //Getting motorcycle data from customer
 
-            Console.WriteLine("Enter fuelType:");
+            Console.WriteLine("FuelType:");
             fuelType = Console.ReadLine();
 
-            Console.WriteLine("Enter motorcycle hasFairing:");
+            Console.WriteLine("Whether motorcycle has Fairing:");
             hasFairing = (Console.ReadLine());
 
         }

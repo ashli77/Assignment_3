@@ -1,5 +1,5 @@
 ﻿// Class Vehicle
-namespace Assignment
+namespace rental
 {
     public abstract class Vehicle
     {

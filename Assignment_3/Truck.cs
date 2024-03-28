@@ -2,7 +2,7 @@
 using System;
 using System.Reflection;
 
-namespace Assignment
+namespace rental
 {
     public class Truck : Vehicle
     {
@@ -15,13 +15,13 @@ namespace Assignment
 
         public void Truckdata()
         {
-            Console.WriteLine("Enter the capacity:");
+            Console.WriteLine("Capacity of vehicle: ");
             capacity = Convert.ToInt32(Console.ReadLine());  // Getting truck data from customer
 
-            Console.WriteLine("Enter the truckType:");
+            Console.WriteLine("Type of Truck: ");
             truckType = Console.ReadLine();
 
-            Console.WriteLine("Enter if fourWheelDrive:");
+            Console.WriteLine("Enter whether 4 Wheel Drive: ");
             fourWheelDrive = (Console.ReadLine());
         }
 

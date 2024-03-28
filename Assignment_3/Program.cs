@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.ConstrainedExecution;
 
-namespace Assignment
+namespace rental
 {
     class Program
     {

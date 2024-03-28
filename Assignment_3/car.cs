@@ -1,5 +1,5 @@
 ﻿// Class Car
-namespace Assignment
+namespace rental
 {
     class Car : Vehicle   
     {
