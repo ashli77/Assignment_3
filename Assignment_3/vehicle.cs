@@ -1,6 +1,7 @@
-﻿namespace Assignment
+﻿// Class Vehicle
+namespace Assignment
 {
-    public abstract class Vehicle // Creating vehicle class
+    public abstract class Vehicle
     {
         public string model;
         public string manufacturer;  // Declaring vehicle class properties

@@ -2,9 +2,9 @@
 {
     public class RentalAgency   //Created RentalAgency class
     {
-        public Vehicle[] fleet;   // declaring fleet array to store vehicle data
-        public int count;           // declaring count in array
-        public double totalRevenue; //declaring totalrevenue
+        public Vehicle[] fleet;   // Fleet array to store vehicle data
+        public int count;           // Declaring Array
+        public double totalRevenue; //Total Revenue
 
         public RentalAgency(int capacity)
         {
@@ -12,7 +12,7 @@
             count = 0;
             totalRevenue = 0;
         }
-        public void AddVehicle(Vehicle vehicle) //method created to add vehicle to fleet
+        public void AddVehicle(Vehicle vehicle) // Add Vehicle
         {
             if (count < fleet.Length)
             {
@@ -24,7 +24,7 @@
             }
         }
 
-        public void RemoveVehicle(Vehicle vehicle)  //method created to remove vehicle from fleet
+        public void RemoveVehicle(Vehicle vehicle)  // remove vehicle from fleet
         {
             int index = Array.IndexOf(fleet, vehicle);
             if (index >= 0)
@@ -42,7 +42,7 @@
             }
         }
 
-        public void RentVehicle(Vehicle vehicle, int days)  //method created to calculate the totalrevenue
+        public void RentVehicle(Vehicle vehicle, int days)  // Calculate the totalrevenue
         {
             if (Array.IndexOf(fleet, vehicle) >= 0)
             {
@@ -55,7 +55,7 @@
             }
 
         }
-        public void Displayfleet()  //method to display the current fleet
+        public void Displayfleet()  // Current fleet
         {
             for (int i = 0; i < count; i++)
             {

@@ -1,10 +1,11 @@
-﻿namespace Assignment
+﻿// Class Car
+namespace Assignment
 {
-    class Car : Vehicle   // Creating Car class
+    class Car : Vehicle   
     {
         public int seats;
         public string engineType;
-        public string transmission;   // Declaring Properties specific to cars
+        public string transmission;   // Properties of cars
         public string convertible;
 
 
@@ -24,7 +25,7 @@
         }
 
 
-        public override void DisplayDetails() // Creating overriden class
+        public override void DisplayDetails()
         {
 
             Console.WriteLine($" Model: {model}, Manufacturerer: {manufacturer}, Year: {year}, RentalPrice: {rentalPrice}Seats: {seats}, Engine Type: {engineType},\n Transmission: {transmission}, Convertible: {(convertible)}");

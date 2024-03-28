@@ -1,4 +1,4 @@
-﻿
+﻿// Main Program Class
 using System;
 using System.Diagnostics;
 using System.Reflection;
@@ -11,7 +11,7 @@ namespace Assignment
         static void Main()
         {
 
-            RentalAgency agency = new RentalAgency(100); // Create an agency with a fleet capacity of 10 vehicles
+            RentalAgency agency = new RentalAgency(100); // Making fleet capacity of 10 vehicles
 
             Car car = new Car
             {

@@ -1,11 +1,12 @@
-﻿using System;
+﻿//Class Motorcycle
+using System;
 
 namespace Assignment
 {
-    public class Motorcycle : Vehicle  // Creating motorcycle class
+    public class Motorcycle : Vehicle
     {
         public int engineCapacity;
-        public string fuelType;        // Declaring properties specific to motorcycle
+        public string fuelType;        // Properties of the Vehicle
         public string hasFairing;
 
         public void Motorcycledata()
@@ -23,7 +24,7 @@ namespace Assignment
 
 
 
-        public override void DisplayDetails() // Overriden class
+        public override void DisplayDetails()
         {
 
             Console.WriteLine($" Model: {model}, Manufacturerer: {manufacturer}, Year: {year}, RentalPrice: {rentalPrice} \n Engine Capacity: {engineCapacity}cc, Fuel Type: {fuelType}, Has Fairing: {hasFairing}");

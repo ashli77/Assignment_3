@@ -1,10 +1,10 @@
-﻿
+﻿// Class Truck
 using System;
 using System.Reflection;
 
 namespace Assignment
 {
-    public class Truck : Vehicle   // Creating Truck class
+    public class Truck : Vehicle
     {
         private int capacity;
         private string truckType;     // Declaring Properties specific to Truck class
@@ -43,7 +43,7 @@ namespace Assignment
             set { fourWheelDrive = value; }
         }
 
-        public override void DisplayDetails()  //overriden class
+        public override void DisplayDetails()
         {
 
             Console.WriteLine($" Model: {model}, Manufacturerer: {manufacturer}, Year: {year}, RentalPrice: {rentalPrice} \n Capacity: {Capacity} tons, Truck Type: {TruckType}, Four-Wheel Drive: {(fourWheelDrive)}");
