@@ -1,51 +1,33 @@
-﻿using System;
-
-// Car Class
-public class Car : Vehicle
+﻿namespace Assignment
 {
-    public int Seats { get; set; }
-    public string EngineType { get; set; }
-    public string Transmission { get; set; }
-    public bool Convertible { get; set; }
-
-    // Constructor
-    public Car(string model, string manufacturer, int year, double rentalPrice, int seats, string engineType, string transmission, bool convertible)
-        : base(model, manufacturer, year, rentalPrice)
+    class Car : Vehicle   // Creating Car class
     {
-        Seats = seats;
-        EngineType = engineType;
-        Transmission = transmission;
-        Convertible = convertible;
-    }
+        public int seats;
+        public string engineType;
+        public string transmission;   // Declaring Properties specific to cars
+        public string convertible;
 
-    // Constructor with user input
-    public Car()
-        : base("", "", 0, 0)
-    {
-        Console.WriteLine("Enter Car details:");
-        Console.Write("Model: ");
-        Model = Console.ReadLine();
-        Console.Write("Manufacturer: ");
-        Manufacturer = Console.ReadLine();
-        Console.Write("Year: ");
-        Year = int.Parse(Console.ReadLine());
-        Console.Write("Rental Price: ");
-        RentalPrice = double.Parse(Console.ReadLine());
-        Console.Write("Seats: ");
-        Seats = int.Parse(Console.ReadLine());
-        Console.Write("Engine Type: ");
-        EngineType = Console.ReadLine();
-        Console.Write("Transmission: ");
-        Transmission = Console.ReadLine();
-        Console.Write("Convertible (true/false): ");
-        Convertible = bool.Parse(Console.ReadLine());
-    }
 
-    // Method to display car details
-    public override void DisplayDetails()
-    {
-        Console.WriteLine($"Car Details:");
-        Console.WriteLine($"Model: {Model}, Manufacturer: {Manufacturer}, Year: {Year}, Rental Price: {RentalPrice:C}");
-        Console.WriteLine($"Seats: {Seats}, Engine Type: {EngineType}, Transmission: {Transmission}, Convertible: {Convertible}");
+        public void Cardata()
+        {
+            Console.WriteLine("Enter number of seats:");   // Getting Car data to be added from customer
+            seats = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter car engineType:");
+            engineType = Console.ReadLine();
+
+            Console.WriteLine("Enter car transmission:");
+            transmission = Console.ReadLine();
+
+            Console.WriteLine("Enter car convertible:");
+            convertible = (Console.ReadLine());
+        }
+
+
+        public override void DisplayDetails() // Creating overriden class
+        {
+
+            Console.WriteLine($" Model: {model}, Manufacturerer: {manufacturer}, Year: {year}, RentalPrice: {rentalPrice}Seats: {seats}, Engine Type: {engineType},\n Transmission: {transmission}, Convertible: {(convertible)}");
+        }
     }
 }

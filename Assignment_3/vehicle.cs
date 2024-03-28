@@ -1,22 +1,15 @@
-﻿using System;
-
-// Abstract Vehicle Class
-public abstract class Vehicle
+﻿namespace Assignment
 {
-    public string Model { get; set; }
-    public string Manufacturer { get; set; }
-    public int Year { get; set; }
-    public double RentalPrice { get; set; }
-
-    // Constructor
-    protected Vehicle(string model, string manufacturer, int year, double rentalPrice)
+    public abstract class Vehicle // Creating vehicle class
     {
-        Model = model;
-        Manufacturer = manufacturer;
-        Year = year;
-        RentalPrice = rentalPrice;
-    }
+        public string model;
+        public string manufacturer;  // Declaring vehicle class properties
+        public int year;
+        public double rentalPrice;
 
-    // Abstract method to display vehicle details
-    public abstract void DisplayDetails();
+
+
+        public abstract void DisplayDetails();  //Creating abstract method
+
+    }
 }

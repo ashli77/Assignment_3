@@ -1,48 +1,32 @@
 ﻿using System;
 
-// Motorcycle Class
-public class Motorcycle : Vehicle
+namespace Assignment
 {
-    public int EngineCapacity { get; set; }
-    public string FuelType { get; set; }
-    public bool HasFairing { get; set; }
-
-    // Constructor
-    public Motorcycle(string model, string manufacturer, int year, double rentalPrice, int engineCapacity, string fuelType, bool hasFairing)
-        : base(model, manufacturer, year, rentalPrice)
+    public class Motorcycle : Vehicle  // Creating motorcycle class
     {
-        EngineCapacity = engineCapacity;
-        FuelType = fuelType;
-        HasFairing = hasFairing;
-    }
+        public int engineCapacity;
+        public string fuelType;        // Declaring properties specific to motorcycle
+        public string hasFairing;
 
-    // Constructor with user input
-    public Motorcycle()
-        : base("", "", 0, 0)
-    {
-        Console.WriteLine("Enter Motorcycle details:");
-        Console.Write("Model: ");
-        Model = Console.ReadLine();
-        Console.Write("Manufacturer: ");
-        Manufacturer = Console.ReadLine();
-        Console.Write("Year: ");
-        Year = int.Parse(Console.ReadLine());
-        Console.Write("Rental Price: ");
-        RentalPrice = double.Parse(Console.ReadLine());
-        Console.Write("Engine Capacity: ");
-        EngineCapacity = int.Parse(Console.ReadLine());
-        Console.Write("Fuel Type: ");
-        FuelType = Console.ReadLine();
-        Console.Write("Has Fairing (true/false): ");
-        HasFairing = bool.Parse(Console.ReadLine());
-    }
+        public void Motorcycledata()
+        {
+            Console.WriteLine("Enter engineCapacity:");
+            engineCapacity = Convert.ToInt32(Console.ReadLine());   //Getting motorcycle data from customer
 
-    // Method to display motorcycle details
-    public override void DisplayDetails()
-    {
-        Console.WriteLine("Motorcycle Details:");
-        Console.WriteLine($"Engine Capacity: {EngineCapacity}");
-        Console.WriteLine($"Fuel Type: {FuelType}");
-        Console.WriteLine($"Has Fairing: {HasFairing}");
+            Console.WriteLine("Enter fuelType:");
+            fuelType = Console.ReadLine();
+
+            Console.WriteLine("Enter motorcycle hasFairing:");
+            hasFairing = (Console.ReadLine());
+
+        }
+
+
+
+        public override void DisplayDetails() // Overriden class
+        {
+
+            Console.WriteLine($" Model: {model}, Manufacturerer: {manufacturer}, Year: {year}, RentalPrice: {rentalPrice} \n Engine Capacity: {engineCapacity}cc, Fuel Type: {fuelType}, Has Fairing: {hasFairing}");
+        }
     }
 }

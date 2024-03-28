@@ -1,52 +1,72 @@
-﻿using System;
-
-// RentalAgency Class
-public class RentalAgency
+﻿namespace Assignment
 {
-    // Array to store fleet
-    private Vehicle[] Fleet { get; set; }
-    public double TotalRevenue { get; private set; }
-
-    // Constructor
-    public RentalAgency(int capacity)
+    public class RentalAgency   //Created RentalAgency class
     {
-        Fleet = new Vehicle[capacity];
-        TotalRevenue = 0;
-    }
+        public Vehicle[] fleet;   // declaring fleet array to store vehicle data
+        public int count;           // declaring count in array
+        public double totalRevenue; //declaring totalrevenue
 
-    // Method to add vehicle to fleet
-    public void AddVehicle(Vehicle vehicle)
-    {
-        for (int i = 0; i < Fleet.Length; i++)
+        public RentalAgency(int capacity)
         {
-            if (Fleet[i] == null)
+            fleet = new Vehicle[capacity];
+            count = 0;
+            totalRevenue = 0;
+        }
+        public void AddVehicle(Vehicle vehicle) //method created to add vehicle to fleet
+        {
+            if (count < fleet.Length)
             {
-                Fleet[i] = vehicle;
-                return;
+                fleet[count++] = vehicle;
+            }
+            else
+            {
+                Console.WriteLine("Fleet is full. Cannot add more vehicles.");
             }
         }
-        Console.WriteLine("Fleet is full. Cannot add more vehicles.");
-    }
 
-    // Method to remove vehicle from fleet
-    public void RemoveVehicle(Vehicle vehicle)
-    {
-        for (int i = 0; i < Fleet.Length; i++)
+        public void RemoveVehicle(Vehicle vehicle)  //method created to remove vehicle from fleet
         {
-            if (Fleet[i] == vehicle)
+            int index = Array.IndexOf(fleet, vehicle);
+            if (index >= 0)
             {
-                Fleet[i] = null;
-                return;
+                // Shift elements to the left to remove the vehicle
+                for (int i = index; i < count - 1; i++)
+                {
+                    fleet[i] = fleet[i + 1];
+                }
+                count--;
+            }
+            else
+            {
+                Console.WriteLine("Vehicle not found in fleet.");
             }
         }
-        Console.WriteLine("Vehicle not found in fleet.");
-    }
 
-    // Method to rent a vehicle
-    public void RentVehicle(Vehicle vehicle, int days)
-    {
-        double rentalCost = vehicle.RentalPrice * days;
-        TotalRevenue += rentalCost;
-        Console.WriteLine($"Vehicle rented for {days} days. Rental cost: {rentalCost:C}");
+        public void RentVehicle(Vehicle vehicle, int days)  //method created to calculate the totalrevenue
+        {
+            if (Array.IndexOf(fleet, vehicle) >= 0)
+            {
+                totalRevenue += vehicle.rentalPrice * days;
+                Console.WriteLine($"Vehicle rented for {days} days. Total cost: ${vehicle.rentalPrice * days} ");
+            }
+            else
+            {
+                Console.WriteLine("Vehicle not found in fleet.");
+            }
+
+        }
+        public void Displayfleet()  //method to display the current fleet
+        {
+            for (int i = 0; i < count; i++)
+            {
+                fleet[i].DisplayDetails();
+                Console.WriteLine("##############################################");
+
+            }
+
+        }
+
+
+
     }
 }

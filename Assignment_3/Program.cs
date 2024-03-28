@@ -1,129 +1,145 @@
-﻿using System;
+﻿
+using System;
+using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.ConstrainedExecution;
 
-class Program
+namespace Assignment
 {
-    static void Main(string[] args)
+    class Program
     {
-        // Create instances of different vehicle types
-        Car car1 = new Car("Civic", "Honda", 2022, 50, 5, "Petrol", "Automatic", false);
-        Truck truck1 = new Truck("F-150", "Ford", 2021, 80, 4, "Pickup", true);
-        Motorcycle bike1 = new Motorcycle("Ninja", "Kawasaki", 2020, 40, 1000, "Petrol", true);
-
-        // Create Rental Agency
-        RentalAgency rentalAgency = new RentalAgency(10);
-
-        int choice;
-        do
+        static void Main()
         {
-            // Display options
-            Console.WriteLine("\nSelect an option:");
-            Console.WriteLine("1. Rent a Vehicle");
-            Console.WriteLine("2. Add a Vehicle");
-            Console.WriteLine("3. Exit");
-            Console.Write("Enter your choice: ");
-            choice = int.Parse(Console.ReadLine());
 
-            switch (choice)
+            RentalAgency agency = new RentalAgency(100); // Create an agency with a fleet capacity of 10 vehicles
+
+            Car car = new Car
             {
-                case 1:
-                    // Rent a vehicle
-                    RentVehicle(rentalAgency, car1, truck1, bike1);
-                    break;
-                case 2:
-                    // Add a vehicle
-                    AddVehicle(rentalAgency);
-                    break;
-                case 3:
-                    // Exit
-                    Console.WriteLine("Exiting program.");
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice!");
-                    break;
+                model = "Camary",
+                manufacturer = "Toyota",
+                year = 2018,
+                rentalPrice = 100,
+                seats = 5,
+                engineType = " V4",
+                transmission = "Automatic",
+                convertible = " Yes"
+            };
+
+
+            Truck truck = new Truck
+            {
+                model = "Silverado",
+                manufacturer = "Chevy",
+                year = 2022,
+                rentalPrice = 150,
+                Capacity = 2,
+                TruckType = "Pickup",
+                FourWheelDrive = "Yes"
+            };
+
+
+            Motorcycle motorcycle = new Motorcycle
+            {
+                model = "R1",
+                manufacturer = "Yamaha",
+                year = 2024,
+                rentalPrice = 50,
+                engineCapacity = 500,
+                fuelType = "Gas",
+                hasFairing = "Yes"
+            };
+
+
+            agency.AddVehicle(car);
+            agency.AddVehicle(truck);
+            agency.AddVehicle(motorcycle);
+            string model, manufacturer;
+            int year;
+            double rentalPrice;
+
+
+            int input = 0;
+            while (input < 5)
+            {
+                Console.WriteLine("Vehicle Rental Management System \n Please select one of the option below: \n 1. Add vehicle \n 2. Remove vehicle \n " +
+                "3. Rent vehicle \n 4. Display vehicle");
+                input = Convert.ToInt32(Console.ReadLine());
+                switch (input)
+                {
+                    case 1:
+                        Console.WriteLine("Which vehicle do you want to add?(Car/Truck/Motorcycle)");
+                        string vehicle = Console.ReadLine().ToLower();
+                        Console.WriteLine("Enter Vehicle model:");
+                        model = Console.ReadLine();
+
+                        Console.WriteLine("Enter Vehicle manufacturer:");
+                        manufacturer = Console.ReadLine();
+
+                        Console.WriteLine("Enter Vehicle year:");
+                        year = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Enter Vehicle rentalPrice:");
+                        rentalPrice = Convert.ToDouble(Console.ReadLine());
+                        if (vehicle == "car")
+                        {
+                            car.model = model;
+                            car.manufacturer = manufacturer;
+                            car.year = year;
+                            car.rentalPrice = rentalPrice;
+
+                            car.Cardata();
+                            agency.AddVehicle(car);
+
+                        }
+                        else if (vehicle == "truck")
+                        {
+                            truck.model = model;
+                            truck.manufacturer = manufacturer;
+                            truck.year = year;
+                            truck.rentalPrice = rentalPrice;
+                            truck.Truckdata();
+                            agency.AddVehicle(truck);
+
+                        }
+                        else if (vehicle == "motorcycle")
+                        {
+                            motorcycle.model = model;
+                            motorcycle.manufacturer = manufacturer;
+                            motorcycle.year = year;
+                            motorcycle.rentalPrice = rentalPrice;
+                            motorcycle.Motorcycledata();
+                            agency.AddVehicle(motorcycle);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Wrong input");
+                        }
+
+                        break;
+                    case 2:
+                        agency.Displayfleet();
+                        Console.WriteLine("Enter the number of vehicle to be removed:");
+                        int input1 = Convert.ToInt32(Console.ReadLine());
+                        agency.RemoveVehicle(agency.fleet[input1 - 1]);
+                        agency.Displayfleet();
+                        break;
+                    case 3:
+                        agency.Displayfleet();
+                        Console.WriteLine("Enter the number of vehicle to be rented:");
+                        int rentvehicle = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("For how many days do you want to rent the vehicle");
+                        int days = Convert.ToInt32(Console.ReadLine());
+                        agency.RentVehicle(agency.fleet[rentvehicle - 1], days);
+                        break;
+                    case 4:
+                        agency.Displayfleet();
+                        break;
+
+                }
             }
-        } while (choice != 3);
-    }
 
-    // Method to rent a vehicle
-    static void RentVehicle(RentalAgency rentalAgency, Car car1, Truck truck1, Motorcycle bike1)
-    {
-        // Display vehicle details
-        Console.WriteLine("Available Vehicles:");
-        Console.WriteLine("1. Car");
-        car1.DisplayDetails();
-        Console.WriteLine("2. Truck");
-        truck1.DisplayDetails();
-        Console.WriteLine("3. Motorcycle");
-        bike1.DisplayDetails();
+            Console.WriteLine($"Total Revenue: {agency.totalRevenue} CAD");
 
-        // Prompt user to select a vehicle
-        Console.WriteLine("\nEnter the number of the vehicle you want to rent:");
-        int choice = int.Parse(Console.ReadLine());
-
-        Vehicle selectedVehicle = null;
-        switch (choice)
-        {
-            case 1:
-                selectedVehicle = car1;
-                break;
-            case 2:
-                selectedVehicle = truck1;
-                break;
-            case 3:
-                selectedVehicle = bike1;
-                break;
-            default:
-                Console.WriteLine("Invalid choice!");
-                break;
-        }
-
-        if (selectedVehicle != null)
-        {
-            // Prompt user for number of days
-            Console.WriteLine("Enter the number of days you want to rent the vehicle:");
-            int days = int.Parse(Console.ReadLine());
-
-            // Rent the selected vehicle
-            rentalAgency.RentVehicle(selectedVehicle, days);
-
-            // Remove the selected vehicle from the fleet
-            rentalAgency.RemoveVehicle(selectedVehicle);
-        }
-    }
-
-    // Method to add a vehicle
-    static void AddVehicle(RentalAgency rentalAgency)
-    {
-        Console.WriteLine("Select vehicle type to add:");
-        Console.WriteLine("1. Car");
-        Console.WriteLine("2. Truck");
-        Console.WriteLine("3. Motorcycle");
-        Console.Write("Enter your choice: ");
-        int choice = int.Parse(Console.ReadLine());
-
-        switch (choice)
-        {
-            case 1:
-                // Add a car
-                Car newCar = new Car();
-                rentalAgency.AddVehicle(newCar);
-                Console.WriteLine("Car added successfully.");
-                break;
-            case 2:
-                // Add a truck
-                Truck newTruck = new Truck();
-                rentalAgency.AddVehicle(newTruck);
-                Console.WriteLine("Truck added successfully.");
-                break;
-            case 3:
-                // Add a motorcycle
-                Motorcycle newMotorcycle = new Motorcycle();
-                rentalAgency.AddVehicle(newMotorcycle);
-                Console.WriteLine("Motorcycle added successfully.");
-                break;
-            default:
-                Console.WriteLine("Invalid choice!");
-                break;
         }
     }
 }
